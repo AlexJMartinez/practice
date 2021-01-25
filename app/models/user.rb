@@ -9,6 +9,6 @@ class User < ApplicationRecord
   validates :username, presence: { message: "can't be blank!"}
   validates :email, uniqueness: { message: "already taken!"}
   validates :email, presence: { message: "can't be blank!"}
-  validates :password, presence: { message: "can't be blank!"}
+  
 
 end
