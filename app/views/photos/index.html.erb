@@ -1,0 +1,46 @@
+<h1 align="center">Gallery</h1>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+</style>
+</head>
+
+
+
+
+<% if logged_in? %>
+    <%= link_to "Home", home_path %></>
+    <%= link_to "Users", users_path %></>
+    <%= link_to "Profile", user_path(current_user) %>
+       <% end %>
+
+
+<table align="center">
+    <% @photos.each do |photo| %>
+      <tr>
+        <td><%= link_to image_tag(photo.url), user_photo_path(photo.user, photo) %></td>
+          <% end %>
+            </tr>
+              </table><br>
+
+<h2 align="center">Recent Uploads</h2>
+
+<table align="center">
+    <% @photos_latest.each do |photo| %>
+      <tr>
+        <td><%= link_to image_tag(photo.url), user_photo_path(photo.user, photo) %></td>
+          <% end %>
+            </tr>
+              </table><br>
+

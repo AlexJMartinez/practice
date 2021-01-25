@@ -1,0 +1,49 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+</style>
+</head>
+
+
+<h1 align="center"><%= @photo.title %></h1><br>
+
+<div align="center">
+  <a target="_blank" href="<%= @photo.url %>">
+    <img src="<%= @photo.url %>" style="width:150px">
+      </a>
+</div>
+
+
+
+<% if @photo.user.id == current_user.id %>
+  <%= link_to "Edit Photo", edit_user_photo_path(@photo) %>
+    <% end %>
+      <%= link_to "Artist Page", user_path(@photo.user) %>
+
+
+<div align="center"><%= render partial: "comments/comments", locals: {comment: @comment, photo: @photo} %></div>
+
+
+<% if @photo.comments.count > 0 %>
+
+<p>Comments:</p>
+
+<ul>
+  <% @photo.comments.each do |comment| %>
+    <li><%= comment.content %></li>                                      
+      <% end %>
+        </ul>
+          <% else %>
+            <p>0 Comments</p>
+              <% end %>
+

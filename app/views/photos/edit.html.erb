@@ -1,0 +1,26 @@
+<h1>Edit Photo</h1>
+
+
+<% if @photo.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@photo.errors.count, "error") %>
+      prohibited this photo from being updated:
+    </h2>
+
+    <ul>
+    <% @photo.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_for [current_user, @photo] do |f| %>
+  Title: <%= f.text_field :title %>
+  Url: <%= f.text_field :url %><br><br>
+  <%= f.submit 'Update Photo' %></>
+<% end %><br>
+
+<%= button_to 'Delete Photo', user_photo_path(@photo.user), method: :delete %>

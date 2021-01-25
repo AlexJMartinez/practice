@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <% if logged_in? %>
+          <%= link_to "Log out", logout_path, method: "DELETE" %>
+        <% end %>
+      </head>
+
+      <body>
+        <% flash.each do |type, msg| %>
+           <div>
+             <%= msg %>
+           </div>
+         <% end %>
+        <%= yield %>
+      </body>
+  </html>

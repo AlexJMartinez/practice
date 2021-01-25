@@ -1,0 +1,12 @@
+<%= link_to 'Home', home_path %>
+
+<h1>Login</h1>
+
+<%= form_for(:session, url: login_path) do |f| %>
+Username: <%= f.text_field :username %>
+Email: <%= f.text_field :email %><br><br>
+Password: <%= f.password_field :password %><br><br>
+<%= f.submit 'Login' %>
+<% end %><br>
+
+<%= link_to('Log in with Facebook!', '/auth/facebook/') %>
