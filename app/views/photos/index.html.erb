@@ -8,13 +8,17 @@ img {
   border-radius: 4px;
   padding: 5px;
   width: 150px;
+  
 }
 
 img:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
+
+. no-underline {text-decoration: none! important;}
 </style>
 </head>
+
 
 
 
@@ -28,19 +32,19 @@ img:hover {
 
 <table align="center">
     <% @photos.each do |photo| %>
-      <tr>
+      <tc>
         <td><%= link_to image_tag(photo.url), user_photo_path(photo.user, photo) %></td>
           <% end %>
-            </tr>
+            </tc>
               </table><br>
 
-<h2 align="center">Recent Uploads</h2>
+<h3 align="center">Recent Uploads</h3>
 
 <table align="center">
     <% @photos_latest.each do |photo| %>
-      <tr>
-        <td><%= link_to image_tag(photo.url), user_photo_path(photo.user, photo) %></td>
+      <tc>
+        <td><%= link_to photo.title, user_photo_path(photo.user, photo) %></td>
           <% end %>
-            </tr>
+            </tc>
               </table><br>
 

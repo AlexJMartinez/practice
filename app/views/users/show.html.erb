@@ -21,10 +21,10 @@ img:hover {
 
 <table align="center">
     <% @user.photos.each do |photo| %>
-      <tr>
+      <tc>
         <td><%= link_to image_tag(photo.url), user_photo_path(photo.user, photo) %></td>
           <% end %>
-            </tr>
+            </tc>
               </table>
 
 <br>
