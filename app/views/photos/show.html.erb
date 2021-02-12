@@ -31,16 +31,19 @@ img:hover {
       <%= link_to "Artist Page", user_path(@photo.user) %>
 
 
-<div align="center"><%= render partial: "comments/comments", locals: {comment: @comment, photo: @photo} %></div>
+<div align="center"><%= render partial: "comments/comments", locals: { comment: @comment, photo: @photo} %></div>
 
 
-<% if @photo.comments.count > 0 %>
+<% if @photo.comments.count >= 1 %>
+
 
 <p>Comments:</p>
 
 <ul>
   <% @photo.comments.each do |comment| %>
-    <li><%= comment.content %></li>                                      
+      <% if comment.valid? %>
+    <li><%= comment.content %> - <%= link_to comment.user.username, user_path(comment.user) %></li> 
+    <% end %>                                     
       <% end %>
         </ul>
           <% else %>

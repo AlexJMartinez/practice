@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
 
       def new
         @comment = Comment.new
+        
       end
 
       def show
@@ -14,8 +15,9 @@ class CommentsController < ApplicationController
 
       def create
         @photo = Photo.find(params[:photo_id])
-        @comment = @photo.comments.build(comment_params)
-        @comment.user = helpers.current_user
+        @comment = @photo.comments.create(comment_params)        
+        @comment.user = current_user
+     
         if @comment.save
             redirect_to user_photo_path(@photo.user, @photo)
         else
@@ -48,7 +50,7 @@ class CommentsController < ApplicationController
       private
 
       def comment_params
-        params.require(:comment).permit(:content, :user_id, :photo_id)
+        params.require(:comment).permit(:content)
       end
 
 end
