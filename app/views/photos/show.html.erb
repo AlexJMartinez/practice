@@ -1,19 +1,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-img {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 150px;
-}
-
-img:hover {
-  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-}
-</style>
 </head>
 
+<%= stylesheet_link_tag 'application.css' %>
 
 <h1 align="center"><%= @photo.title %></h1><br>
 
@@ -31,7 +20,7 @@ img:hover {
       <%= link_to "Artist Page", user_path(@photo.user) %>
 
 
-<div align="center"><%= render partial: "comments/comments", locals: { comment: @comment, photo: @photo} %></div>
+<div align="center"><%= render partial: "comments/comments", locals: { photo: @photo, comment: @comment } %></div>
 
 
 <% if @photo.comments.count >= 1 %>
@@ -40,13 +29,13 @@ img:hover {
 <p>Comments:</p>
 
 <ul>
-  <% @photo.comments.each do |comment| %>
-      <% if comment.valid? %>
+  <% @photo.comments.all.each do |comment| %> 
+        
     <li><%= comment.content %> - <%= link_to comment.user.username, user_path(comment.user) %></li> 
-    <% end %>                                     
-      <% end %>
-        </ul>
-          <% else %>
-            <p>0 Comments</p>
-              <% end %>
+            
+        <% end %>
+          </ul>
+            <% else %>
+              <p>0 Comments</p>
+                <% end %>
 
