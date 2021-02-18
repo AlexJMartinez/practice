@@ -2,13 +2,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<%= stylesheet_link_tag 'application.css' %>
-
 
 <h1 align="center"><%= @user.username %></h1>
 
 
-<table align="center">
+<table class="img" align="center">
     <% @user.photos.each do |photo| %>
       <tc>
         <td><%= link_to image_tag(photo.url), user_photo_path(photo.user, photo) %></td>
